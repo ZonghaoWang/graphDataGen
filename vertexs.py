@@ -1,7 +1,7 @@
 from utils import *
 import json
 import pandas as pd
-
+import sys
 # config
 """
 {prop1: {
@@ -168,5 +168,5 @@ if __name__ == '__main__':
     }
     }
     """
-    saveToCsv(json.loads(vertexConfig), 1000, json.loads(edgeConfig), 10)
+    saveToCsv(json.loads(vertexConfig), sys.argv[1], json.loads(edgeConfig), sys.argv[2])
 
