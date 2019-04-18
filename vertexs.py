@@ -94,10 +94,10 @@ def saveToCsv(vertexConfig, vertexLength, edgeConfig, edgesPerVertex):
         tmpVertes.append(tmp)
     columns = []
     for key, value in vertexConfig.items():
-        if value['prop'] == "INT" or value['prop'] == "Long":
-            columns.append(value['prop'] + ":int")
+        if value['type'] == "INT" or value['type'] == "Long":
+            columns.append(key + ":int")
         else:
-            columns.append(value['prop'])
+            columns.append(key)
     columns.append("pk:ID")
 
     vertexPd = pd.DataFrame(tmpVertes, columns=columns)
@@ -116,10 +116,10 @@ def saveToCsv(vertexConfig, vertexLength, edgeConfig, edgesPerVertex):
         tmpEdges.append(tmp)
     columns = []
     for key, value in edgeConfig.items():
-        if value['prop'] == "INT" or value['prop'] == "Long":
-            columns.append(value['prop'] + ":int")
+        if value['type'] == "INT" or value['type'] == "Long":
+            columns.append(key + ":int")
         else:
-            columns.append(value['prop'])
+            columns.append(key)
     columns.append(":START_ID")
     columns.append(":END_ID")
     edgePd = pd.DataFrame(tmpEdges, columns=columns)
