@@ -56,7 +56,7 @@ def getVertexs(config, length):
         if "primary" in value:
             primaryName = key
     rst = dict()
-    for i in range (length):
+    for i in range(length):
         vertex = getRandomVertex(config)
         rst[vertex[primaryName]] = vertex
     return rst
@@ -124,8 +124,8 @@ def saveToCsv(vertexConfig, vertexLength, edgeConfig, edgesPerVertex):
     columns.append(":END_ID")
     edgePd = pd.DataFrame(tmpEdges, columns=columns)
     edgePd[':Type'] = "PyEdge"
-    edgePd.to_csv("./edges.csv", sep=";", index=None)
-    vertexPd.to_csv("./vertexs.csv", sep=";", index=None)
+    edgePd.to_csv("./edges_" + sys.argv[1] + "_" + sys.argv[2] + ".csv", index=None)
+    vertexPd.to_csv("./vertexs_" + sys.argv[1] + "_" + sys.argv[2] + ".csv", index=None)
 
 
 
@@ -145,7 +145,7 @@ if __name__ == '__main__':
     "primary": true
     },
     "prop3": {
-    "type": "Long",
+    "type": "Int",
     "prop": 0.9
     }
     }
@@ -163,10 +163,10 @@ if __name__ == '__main__':
     "primary": true
     },
     "prop3": {
-    "type": "Long",
+    "type": "Int",
     "prop": 0.9
     }
     }
     """
-    saveToCsv(json.loads(vertexConfig), sys.argv[1], json.loads(edgeConfig), sys.argv[2])
+    saveToCsv(json.loads(vertexConfig), int(sys.argv[1]), json.loads(edgeConfig), int(sys.argv[2]))
 
